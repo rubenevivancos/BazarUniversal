@@ -9,7 +9,14 @@ body {
   .container {
     text-align: center;
   }
-  
+
+  .food-car {
+    width: 180px;
+    height: 180px;
+    background-image: url("../../Images/carrito.png");
+    background-size: cover;
+  }
+
   .row {
     margin-bottom: 20px;
   }

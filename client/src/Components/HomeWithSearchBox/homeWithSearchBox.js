@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
-import { getByProduct } from "../../../Redux/Actions/productAction";
+import { getByProduct } from "../../Redux/Actions/productAction";
 import './homeWithSearchBox.css';
 
 export default function HomeWithSearchBox() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [product, setProduct] = useState("");
 
@@ -17,6 +19,7 @@ export default function HomeWithSearchBox() {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(getByProduct(product));
+        navigate('/items');
     }
 
 

@@ -11,7 +11,7 @@ export const productReducer = createSlice({
     name: "productReducer",
     initialState,
     reducers:{
-        getProductReducer: (state, action) => {
+        getByProductReducer: (state, action) => {
             if(action.payload.length){
                 state.listProduct = action.payload;
                 state.error= "";
@@ -29,7 +29,7 @@ export const productReducer = createSlice({
 })
 
 export const {
-    getProductReducer, 
+    getByProductReducer, 
     successMsg, 
     errorMsg
 } = productReducer.actions;

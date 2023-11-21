@@ -1,6 +1,25 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { getByProduct } from "../../../Redux/Actions/productAction";
 import './homeWithSearchBox.css';
 
 export default function HomeWithSearchBox() {
+    const dispatch = useDispatch();
+
+    const [product, setProduct] = useState("");
+
+    const handleInput = (e) => {
+        e.preventDefault()
+        setProduct(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(getByProduct(product));
+    }
+
+
     return(
         <div className="container">
             <div className="row">
@@ -11,12 +30,12 @@ export default function HomeWithSearchBox() {
             </div>
             <div className="row">
                 <div className="search-container">
-                    <input type="text" placeholder="laptops, smartphones, ..." className="search-box"/>
+                    <input type="text" placeholder="laptops, smartphones, ..." className="search-box" onChange={handleInput}/>
                     <div className="search-icon"></div>
                 </div>
             </div>
             <div className="row">
-                <button className="search-button">Buscar</button>
+                <button className="search-button" onClick={handleSubmit}>Buscar</button>
             </div>
         </div>
     )

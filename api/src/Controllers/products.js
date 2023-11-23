@@ -1,25 +1,30 @@
-
+const fs = require("fs");
 
 
 function getByProduct(req, res){
     console.log("[ getByProduct ] INICIO");
-    const { search } = req.query;
+    let { search } = req.query;
+    console.log("[ getByProduct ] search --> " + search);
 
-    const products = [];
-    /*
     if (search) {
+        search = search.toLowerCase();
         console.log("[ getByProduct ] El producto a buscar es: " + search);
-        //const products = listDogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase()));
-        //const products = [];
-        if(products.length){
-            console.log("[ getByProduct ] Se encontraron " + products.length + " resultados");
-            return res.status(200).json(products);
+
+        //const data = JSON.parse(fs.readFileSync('C:\\Descargas\\Programacion\\Programacion\\BazarUniversal\\api\\src\\Json\\products.json'));
+        const data = JSON.parse(fs.readFileSync('products.json'));
+        
+        const listProducts = data.products;
+        const result = listProducts.filter(product => product.title.toLowerCase().includes(search) || product.category.toLowerCase().includes(search));
+
+        if(result.length){
+            console.log("[ getByProduct ] Se encontraron " + result.length + " resultados");
+            return res.status(200).json(result);
         }
         console.log("[ getByProduct ] No hay resultados");
         return res.status(422).json({message: "No hay resultados"}); 
     }
-    */
-    return res.status(200).json(products);
+    
+    return res.status(200).json([]);
 }
 
 

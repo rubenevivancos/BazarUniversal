@@ -19,7 +19,11 @@ export default function HomeWithSearchBox() {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(getByProduct(product));
-        navigate('/items');
+
+        // Crea una nueva ruta con el parámetro de consulta "search"
+        const newRoute = `/items?search=${product}`;
+
+        navigate(newRoute);
     }
 
 

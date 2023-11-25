@@ -1,7 +1,12 @@
 export default function SearchResults() {
     return(
-        <div>
-            Estamos en SearchResults
+        <div >
+            <div >
+                <div >
+                    <input type="text" placeholder="laptops, smartphones, ..."/>
+                    <div></div>
+                </div>
+            </div>
         </div>
     )
 }

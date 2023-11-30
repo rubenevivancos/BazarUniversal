@@ -1,3 +1,6 @@
+const listProducts = useSelector((state) => state.productReducer.listProduct);
+
+
 export default function SearchResults() {
     return(
         <div >

@@ -7,6 +7,7 @@ export default function SearchResults() {
                     <div></div>
                 </div>
             </div>
+            <div>Resultados de la busqueda:</div>
         </div>
     )
 }

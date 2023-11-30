@@ -1,14 +1,14 @@
 const fs = require("fs");
 
 
-function getByProduct(req, res){
-    console.log("[ getByProduct ] INICIO");
+function productSearch(req, res){
+    console.log("[ productSearch ] INICIO");
     let { search } = req.query;
-    console.log("[ getByProduct ] search --> " + search);
+    console.log("[ productSearch ] search --> " + search);
 
     if (search) {
         search = search.toLowerCase();
-        console.log("[ getByProduct ] El producto a buscar es: " + search);
+        console.log("[ productSearch ] El producto a buscar es: " + search);
 
         //const data = JSON.parse(fs.readFileSync('C:\\Descargas\\Programacion\\Programacion\\BazarUniversal\\api\\src\\Json\\products.json'));
         const data = JSON.parse(fs.readFileSync('products.json'));
@@ -17,10 +17,10 @@ function getByProduct(req, res){
         const result = listProducts.filter(product => product.title.toLowerCase().includes(search) || product.category.toLowerCase().includes(search));
 
         if(result.length){
-            console.log("[ getByProduct ] Se encontraron " + result.length + " resultados");
+            console.log("[ productSearch ] Se encontraron " + result.length + " resultados");
             return res.status(200).json(result);
         }
-        console.log("[ getByProduct ] No hay resultados");
+        console.log("[ productSearch ] No hay resultados");
         return res.status(422).json({message: "No hay resultados"}); 
     }
     
@@ -28,4 +28,4 @@ function getByProduct(req, res){
 }
 
 
-module.exports = getByProduct;
+module.exports = productSearch;

@@ -1,12 +1,12 @@
 const { Router } = require('express');
-const getByProduct = require("../Controllers/products");
+const productSearch = require("../Controllers/products");
 
 
 const router = Router();
 
 
 
-router.get('/getByProduct', getByProduct);
+router.get('/productSearch', productSearch);
 
 
 

@@ -6,7 +6,7 @@ const product = require('./product');
 const router = Router();
 
 // Configurar los routers
-router.use('/product', product);
+router.use('/products', product);
 
 
 module.exports = router;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
-import { getByProduct } from "../../Redux/Actions/productAction";
+import { productSearch } from "../../Redux/Actions/productAction";
 import './homeWithSearchBox.css';
 
 export default function HomeWithSearchBox() {
@@ -18,7 +18,7 @@ export default function HomeWithSearchBox() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(getByProduct(product));
+        dispatch(productSearch(product));
 
         // Crea una nueva ruta con el parámetro de consulta "search"
         const newRoute = `/items?search=${product}`;

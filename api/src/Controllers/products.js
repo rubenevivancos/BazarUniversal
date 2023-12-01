@@ -14,7 +14,23 @@ function productSearch(req, res){
         const data = JSON.parse(fs.readFileSync('products.json'));
         
         const listProducts = data.products;
+
+        //Obteniendo el listado de la busqueda
         const result = listProducts.filter(product => product.title.toLowerCase().includes(search) || product.category.toLowerCase().includes(search));
+
+
+        //Obteniendo la cantidad de productos por categoria del listado de la busqueda
+        const categories = result.map((object) => object.category);
+        const uniqueCategories = new Set(categories);
+
+        const categoriesWithCount = [];
+
+        uniqueCategories.forEach((category) => {
+            const objectsByCategory = result.filter((object) => object.category === category);
+            categoriesWithCount.push({ category, count: objectsByCategory.length });
+        });
+        //Obteniendo la cantidad de productos por categoria del listado de la busqueda
+
 
         if(result.length){
             console.log("[ productSearch ] Se encontraron " + result.length + " resultados");

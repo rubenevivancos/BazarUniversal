@@ -1,16 +1,30 @@
-const listProducts = useSelector((state) => state.productReducer.listProduct);
+import { useSelector } from 'react-redux';
+
+import "./searchResults.css";
 
 
 export default function SearchResults() {
-    return(
-        <div >
+
+    const listProducts = useSelector((state) => state.productReducer.listProduct);
+    const productToSearch = useSelector((state) => state.productReducer.productToSearch);
+    const categoriesWithCount = useSelector((state) => state.productReducer.categoriesWithCount);
+
+    if(listProducts.length){
+        return(
             <div >
                 <div >
-                    <input type="text" placeholder="laptops, smartphones, ..."/>
-                    <div></div>
+                    <div >
+                        <input type="text" placeholder="laptops, smartphones, ..."/>
+                        <div></div>
+                    </div>
+                </div>
+                <div>Resultados de la busqueda de " {productToSearch} ": {listProducts.length}</div>
+                <div className="category-list">
+                    {categoriesWithCount.map((cat) => (
+                        <div key={cat.category}>{cat.category} - {cat.count}</div>
+                    ))}
                 </div>
             </div>
-            <div>Resultados de la busqueda:</div>
-        </div>
-    )
+        )
+    }
 }

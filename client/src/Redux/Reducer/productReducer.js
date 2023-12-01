@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+    productToSearch: "",
     listProduct: [],
+    categoriesWithCount: [],
     error: "",
     success: "" 
 }
@@ -12,8 +14,11 @@ export const productReducer = createSlice({
     initialState,
     reducers:{
         productSearchReducer: (state, action) => {
-            if(action.payload.length){
-                state.listProduct = action.payload;
+            let result = action.payload;
+            if(result.response.listProducts.length){
+                state.listProduct = result.response.listProducts;
+                state.categoriesWithCount = result.response.categoriesWithCount;
+                state.productToSearch = result.productToSearch;
                 state.error= "";
             }else{
                 state.error = "NO HAY RESULTADOS";

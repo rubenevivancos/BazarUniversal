@@ -5,9 +5,12 @@ import { productSearchReducer } from "../Reducer/productReducer";
 export const productSearch = (product) => async (dispatch) => {
     try {
         console.log("Se busca: " + product);
-        var response = (await axios.get(`http://localhost:3001/products/productSearch?search=${product}`)).data;
-        console.log("[ productSearch(product) ] La busqueda del producto: " + product + " encontro " + response.length + " resultados"); 
-        dispatch(productSearchReducer(response));
+        let response = (await axios.get(`http://localhost:3001/products/productSearch?search=${product}`)).data;
+        console.log("[ productSearch(product) ] La busqueda del producto: " + product + " encontro " + response.listProducts.length + " resultados"); 
+
+        let result = {response: response, productToSearch: product}
+
+        dispatch(productSearchReducer(result));
 
     } catch (error) {
         console.log("[ productSearch ] Excepcion: error.message: " + error.message);

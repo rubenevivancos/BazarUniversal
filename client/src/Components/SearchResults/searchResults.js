@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 
+import Product from "../Product/product.js";
 import "./searchResults.css";
 
 
@@ -23,6 +24,9 @@ export default function SearchResults() {
                     {categoriesWithCount.map((cat) => (
                         <div key={cat.category}>{cat.category} - {cat.count}</div>
                     ))}
+                </div>
+                <div>
+                    { listProducts.map( product => <Link to={"/dogDetail/"+product.id} key={product.id}><Product product={product} /></Link>) }
                 </div>
             </div>
         )

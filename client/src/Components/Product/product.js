@@ -1,8 +1,10 @@
-export default function Product() {
+export default function Product({product}) {
 
     return(
         <div >
-            Componente Producto
+            <div>
+                <img src={product.images[0]} alt={dog.name}/>
+            </div>
         </div>
     )
 }

@@ -26,7 +26,7 @@ export default function SearchResults() {
                     ))}
                 </div>
                 <div>
-                    { listProducts.map( product => <Link to={"/dogDetail/"+product.id} key={product.id}><Product product={product} /></Link>) }
+                    { listProducts.map( product => <Link to={"/items/"+product.id} key={product.id}><Product product={product} /></Link>) }
                 </div>
             </div>
         )

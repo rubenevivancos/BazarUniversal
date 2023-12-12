@@ -23,6 +23,18 @@ export default function ProductDetail() {
                         <input type="text" placeholder="laptops, smartphones, ..."/>
                         <div></div>
                     </div>
+                    <div>
+                        {product.title}
+                    </div>
+                    <div>
+                        {product.price}
+                    </div>
+                    <div>
+                        {product.rating}
+                    </div>
+                    <div>
+                        {product.description}
+                    </div>
                 </div>
             </div>
         )

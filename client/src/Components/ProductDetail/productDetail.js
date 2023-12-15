@@ -38,6 +38,9 @@ export default function ProductDetail() {
                     <div>
                         {product.description}
                     </div>
+                    <div>
+                        {product.description}
+                    </div>
                 </div>
             </div>
         )

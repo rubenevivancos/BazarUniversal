@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 
 import Product from "../Product/product.js";
 import "./searchResults.css";
@@ -12,9 +13,9 @@ export default function SearchResults() {
 
     if(listProducts.length){
         return(
-            <div >
-                <div >
-                    <div >
+            <div>
+                <div>
+                    <div>
                         <input type="text" placeholder="laptops, smartphones, ..."/>
                         <div></div>
                     </div>

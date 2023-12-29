@@ -68,7 +68,7 @@ body {
   }
 
   /* Estilos para la estrella activa */
-  .star.active {
+  .star-active {
     color: #ffd700; /* Color activo de la estrella */
     overflow: hidden;
     display: inline-block;

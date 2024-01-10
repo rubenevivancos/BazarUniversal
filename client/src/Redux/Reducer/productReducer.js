@@ -4,6 +4,7 @@ const initialState = {
     productToSearch: "",
     listProduct: [],
     categoriesWithCount: [],
+    productDetail: {},
     error: "",
     success: "" 
 }

@@ -23,8 +23,8 @@ export const productSearch = (product) => async (dispatch) => {
 export const getProductDetail = (id) => async (dispatch) => {
     try {
         console.log("Se obtendra el detalle del producto con id: " + id);
-        let response = (await axios.get(`http://localhost:3001/products/productSearch?search=${product}`)).data;
-        console.log("[ productSearch(product) ] La busqueda del producto: " + product + " encontro " + response.listProducts.length + " resultados"); 
+        let response = (await axios.get(`http://localhost:3001/products/productDetail?search=${id}`)).data;
+        console.log("[ getProductDetail(id) ] La busqueda del producto: " + id + " encontro " + response.listProducts.length + " resultados"); 
 
         let result = {response: response, productToSearch: product}
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { productSearchReducer } from "../Reducer/productReducer";
+import { productSearchReducer, getProductDetailReducer } from "../Reducer/productReducer";
 
 
 
@@ -28,10 +28,10 @@ export const getProductDetail = (id) => async (dispatch) => {
 
         let result = {response: response, productToSearch: product}
 
-        dispatch(productSearchReducer(result));
+        dispatch(getProductDetailReducer(result));
 
     } catch (error) {
-        console.log("[ productSearch ] Excepcion: error.message: " + error.message);
+        console.log("[ getProductDetail ] Excepcion: error.message: " + error.message);
         dispatch(errorMsg("Ocurrio un error...intentelo mas tarde"));
     }
 }

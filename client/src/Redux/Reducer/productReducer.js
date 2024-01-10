@@ -24,6 +24,17 @@ export const productReducer = createSlice({
                 state.error = "NO HAY RESULTADOS";
             }
         },
+        getProductDetailReducer: (state, action) => {
+            let result = action.payload;
+            if(result.response.listProducts.length){
+                state.listProduct = result.response.listProducts;
+                state.categoriesWithCount = result.response.categoriesWithCount;
+                state.productToSearch = result.productToSearch;
+                state.error= "";
+            }else{
+                state.error = "NO HAY RESULTADOS";
+            }
+        },
         successMsg: (state, action) => {
             state.success = action.payload
         },
@@ -34,7 +45,8 @@ export const productReducer = createSlice({
 })
 
 export const {
-    productSearchReducer, 
+    productSearchReducer,
+    getProductDetailReducer,
     successMsg, 
     errorMsg
 } = productReducer.actions;

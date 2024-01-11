@@ -23,12 +23,11 @@ export const productSearch = (product) => async (dispatch) => {
 export const getProductDetail = (id) => async (dispatch) => {
     try {
         console.log("Se obtendra el detalle del producto con id: " + id);
-        let response = (await axios.get(`http://localhost:3001/products/productDetail?search=${id}`)).data;
-        console.log("[ getProductDetail(id) ] La busqueda del producto: " + id + " encontro " + response.listProducts.length + " resultados"); 
+        let response = (await axios.get(`http://localhost:3001/products/${id}`)).data;
+        console.log("[ getProductDetail ] Se recibio respuesta del backend");
+        console.log("[ getProductDetail ] response: " + response);
 
-        let result = {response: response, productToSearch: product}
-
-        dispatch(getProductDetailReducer(result));
+        dispatch(getProductDetailReducer(response));
 
     } catch (error) {
         console.log("[ getProductDetail ] Excepcion: error.message: " + error.message);

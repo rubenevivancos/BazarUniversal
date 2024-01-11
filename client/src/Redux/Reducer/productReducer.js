@@ -4,7 +4,7 @@ const initialState = {
     productToSearch: "",
     listProduct: [],
     categoriesWithCount: [],
-    productDetail: {},
+    productDetail: null,
     error: "",
     success: "" 
 }
@@ -26,15 +26,12 @@ export const productReducer = createSlice({
             }
         },
         getProductDetailReducer: (state, action) => {
-            let result = action.payload;
-            if(result.response.listProducts.length){
-                state.listProduct = result.response.listProducts;
-                state.categoriesWithCount = result.response.categoriesWithCount;
-                state.productToSearch = result.productToSearch;
-                state.error= "";
+            if(action.payload){
+                state.productDetail = action.payload;
             }else{
+                state.productDetail = null;
                 state.error = "NO HAY RESULTADOS";
-            }
+            } 
         },
         successMsg: (state, action) => {
             state.success = action.payload

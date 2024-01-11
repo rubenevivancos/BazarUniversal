@@ -9,11 +9,8 @@ function productSearch(req, res){
     if (search) {
         search = search.toLowerCase();
         console.log("[ productSearch ] El producto a buscar es: " + search);
-
-        //const data = JSON.parse(fs.readFileSync('C:\\Descargas\\Programacion\\Programacion\\BazarUniversal\\api\\src\\Json\\products.json'));
-        const data = JSON.parse(fs.readFileSync('products.json'));
         
-        const listProducts = data.products;
+        const listProducts = getListProducts();
 
         //Obteniendo el listado de la busqueda
         const result = listProducts.filter(product => product.title.toLowerCase().includes(search) || product.category.toLowerCase().includes(search));
@@ -49,5 +46,34 @@ function productSearch(req, res){
     return res.status(200).json([]);
 }
 
+function getDetail(req, res){
+    console.log("[ src/routes/products.js/:id ] INICIO");
+    const { idProduct } = req.params;
+    const listProducts = getListProducts();
 
-module.exports = productSearch;
+    if (idProduct) {
+        console.log("[ src/routes/products.js/:idProduct ] El id a buscar es: " + idProduct);
+        const product = listProducts.filter(p => p.id == idProduct);
+        if(product.length){
+            console.log("[ src/routes/products.js/:idProduct ] Se encontro el detalle del producto");
+            console.log("[ src/routes/products.js/:idProduct ] El producto es: " + product[0].title);
+            return res.status(200).json(product[0]);
+        }
+        console.log("[ src/routes/products.js/:idProduct ] No hay resultados");
+        return res.status(422).json({message: "No hay resultados"}); 
+    }
+
+    return res.status(400).json({message: "Falta enviar datos obligatorios"});
+}
+
+function getListProducts(){
+    //const data = JSON.parse(fs.readFileSync('C:\\Descargas\\Programacion\\Programacion\\BazarUniversal\\api\\src\\Json\\products.json'));
+    const data = JSON.parse(fs.readFileSync('products.json'));
+        
+    return data.products; 
+}
+
+module.exports = {
+    productSearch,
+    getDetail
+};

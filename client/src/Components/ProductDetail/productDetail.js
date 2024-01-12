@@ -41,7 +41,7 @@ export default function ProductDetail() {
                         {product.description}
                     </div>
                     <div>
-                        {product.description}
+                        <button>Comprar</button>
                     </div>
                 </div>
             </div>

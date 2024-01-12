@@ -37,6 +37,7 @@ function productSearch(req, res){
 
         if(result.length){
             console.log("[ productSearch ] Se encontraron " + result.length + " resultados");
+            console.log("[ productSearch ] image: " + result[0].images[0]);
             return res.status(200).json(resul);
         }
         console.log("[ productSearch ] No hay resultados");
